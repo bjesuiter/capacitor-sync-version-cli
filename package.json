@@ -1,40 +1,47 @@
 {
-  "name": "cap-sync-version",
-  "version": "0.0.1",
-  "description": "This CLI syncs the npm package version to the capacitor android and ios projects",
-  "main": "index.js",
-  "bin": {
-    "cap-sync-version": "index.js"
-  },
-  "scripts": {
-    "start": "./index.js",
-    "test": "xo"
-  },
-  "dependencies": {
-    "commander": "^5.0.0"
-  },
-  "devDependencies": {
-    "ava": "^3.7.1",
-    "esm": "^3.2.25",
-    "prettier": "^2.0.5",
-    "xo": "^0.29.1"
-  },
-  "keywords": [
-    "capacitor",
-    "ionic",
-    "cli",
-    "dev-ops",
-    "build-scripts",
-    "build"
-  ],
-  "author": "Benjamin Jesuiter <bjesuiter@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bjesuiter/capacitor-sync-version-cli/issues"
-  },
-  "homepage": "https://github.com/bjesuiter/capacitor-sync-version-cli#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/bjesuiter/capacitor-sync-version-cli.git"
-  }
+	"name": "cap-sync-version",
+	"version": "0.0.1",
+	"description": "This CLI syncs the npm package version to the capacitor android and ios projects",
+	"main": "index.js",
+	"bin": {
+		"cap-sync-version": "index.js"
+	},
+	"scripts": {
+		"start": "./index.js",
+		"test": "xo"
+	},
+	"dependencies": {
+		"commander": "^5.0.0",
+		"project-version": "^1.2.0"
+	},
+	"devDependencies": {
+		"ava": "^3.7.1",
+		"esm": "^3.2.25",
+		"prettier": "^2.0.5",
+		"xo": "^0.29.1"
+	},
+	"keywords": [
+		"capacitor",
+		"ionic",
+		"cli",
+		"dev-ops",
+		"build-scripts",
+		"build"
+	],
+	"author": "Benjamin Jesuiter <bjesuiter@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/bjesuiter/capacitor-sync-version-cli/issues"
+	},
+	"homepage": "https://github.com/bjesuiter/capacitor-sync-version-cli#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/bjesuiter/capacitor-sync-version-cli.git"
+	},
+	"files": [
+		"src",
+		"index.js",
+		"README.md",
+		"CHANGELOG.md"
+	]
 }
