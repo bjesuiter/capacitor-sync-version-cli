@@ -28,6 +28,8 @@ export async function updateAndroidVersion(newVersionString, allowPrereleaseVers
 	logger.log('New app.properties Content', appProperties);
 
 	await fs.writeFile(androidAppPropertiesPath, newPropertiesString);
+
+	logger.log('Updating Android App Version successful. Please commit all pending changes now.');
 }
 
 /**
