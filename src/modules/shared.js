@@ -10,6 +10,7 @@ export function splitVersionIntoParts(npmVersionString) {
 		versionMajor,
 		versionMinor,
 		versionPatch,
-		versionPrerelease
+		versionPrerelease,
+		versionWithoutPrerelease: `${versionMajor}.${versionMinor}.${versionPatch}`
 	};
 }
