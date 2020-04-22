@@ -2,6 +2,7 @@ import {parseFile as parsePropertiesFile, stringify as stringifyProperties} from
 import fs from 'fs-extra';
 
 import logdown from 'logdown';
+import {splitVersionIntoParts} from './shared';
 const logger = logdown('Cap Sync Version - Android');
 logger.state = {isEnabled: true};
 
@@ -21,11 +22,24 @@ export async function updateAndroidVersion(newVersionString, allowPrereleaseVers
 	// Note: app.properties is a manually created custom file which is used in build.gradle
 	// to set the android versionName and versionCode variables
 	const appProperties = await parsePropertiesFile(androidAppPropertiesPath);
+	const {versionPrerelease, versionWithoutPrerelease} = splitVersionIntoParts(newVersionString);
+
+	if (allowPrereleaseVersions) {
+		appProperties.versionName = newVersionString;
+	} else {
+		if (versionPrerelease !== undefined) {
+			logger.warn(`This package has a prerelease version number (${newVersionString}), 
+			but prerelease versions are not allowed per default, since they don't work on iOS. 
+			The version name will be truncated to ${versionWithoutPrerelease}`);
+		}
+
+		appProperties.versionName = versionWithoutPrerelease;
+	}
 
 	appProperties.versionCode = buildAndroidVersionCode(newVersionString, allowPrereleaseVersions);
 
-	const newPropertiesString = stringifyProperties(appProperties);
 	logger.log('New app.properties Content', appProperties);
+	const newPropertiesString = stringifyProperties(appProperties);
 
 	await fs.writeFile(androidAppPropertiesPath, newPropertiesString);
 
@@ -54,8 +68,7 @@ export async function updateAndroidVersion(newVersionString, allowPrereleaseVers
  */
 export function buildAndroidVersionCode(newVersionString, allowPrereleaseVersions) {
 	// Calculate new versionCode, based on https://medium.com/@manas/manage-your-android-app-s-versioncode-versionname-with-gradle-7f9c5dcf09bf
-	const [versionMajor, versionMinor, rest] = newVersionString.split('.');
-	const [versionPatch, versionPrerelease] = rest.split('-');
+	const {versionMajor, versionMinor, versionPatch, versionPrerelease} = splitVersionIntoParts(newVersionString);
 
 	if (versionMajor > '2147') {
 		throw new Error(`You've reached the maximum major version number of 2147. 
