@@ -28,16 +28,6 @@ cli.on('--help', () => {
 	);
 });
 
-cli.parse(process.argv);
-
-if (process.argv.slice(2).length === 0) {
-	// Display the help text in red on the console
-	cli.outputHelp();
-
-	// eslint-disable-next-line unicorn/no-process-exit
-	process.exit(0);
-}
-
 async function main(cli) {
 	const projectPackageJson = await readPkg();
 	const packageVersion = projectPackageJson.version;
@@ -45,9 +35,12 @@ async function main(cli) {
 	logger.log('Package Version', packageVersion);
 	logger.log('CLI', cli);
 
-	// await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
+	await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
 }
 
 main(cli).catch(error => {
-	logger.error('Execution Error:', error);
+	logger.error(error);
+	console.log('\n');
+	// TODO: Display the help text in red on the console
+	cli.outputHelp();
 });
