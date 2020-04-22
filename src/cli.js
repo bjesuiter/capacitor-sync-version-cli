@@ -41,7 +41,7 @@ cli.parse(process.argv);
 
 if (process.argv.slice(2).length === 0) {
 	// Set android and ios flags to true when no params are given.
-	// This allows
+	// This allows deactivation of either ios or android, when the other is given explicitly
 	cli.android = true;
 	cli.ios = true;
 }
@@ -52,8 +52,13 @@ async function main(cli) {
 
 	logger.log('Updating capacitor project versions to: ', packageVersion);
 
-	await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
-	await updateIosVersion(packageVersion);
+	if (cli.android) {
+		await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
+	}
+
+	if (cli.ios) {
+		await updateIosVersion(packageVersion);
+	}
 }
 
 main(cli).catch(error => {
