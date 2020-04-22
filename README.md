@@ -3,7 +3,7 @@
 ![](https://img.shields.io/npm/v/cap-sync-version/latest)
 ![](https://img.shields.io/npm/l/cap-sync-version)
 ![](https://img.shields.io/snyk/vulnerabilities/npm/cap-sync-version)
-![](https://img.shields.io/badge/code_style-XO+Prettier-00eaf0)
+![](https://img.shields.io/badge/code_style-XO%2BPrettier-00eaf0)
 ![](https://img.shields.io/badge/released_with-np-lightgrey)
 ![](https://img.shields.io/badge/badges_from-shields.io-brightgreen)
 
