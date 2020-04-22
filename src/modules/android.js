@@ -9,6 +9,8 @@ logger.state = {isEnabled: true};
 export const androidAppPropertiesPath = './android/app/app.properties';
 
 export async function updateAndroidVersion(newVersionString, allowPrereleaseVersions) {
+	logger.log('Updating Android App Version...');
+
 	const appPropertiesExist = await fs.exists(androidAppPropertiesPath);
 	if (appPropertiesExist === false) {
 		throw new Error(
