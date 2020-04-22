@@ -15,7 +15,8 @@
 		"fs-extra": "^9.0.0",
 		"java-props": "^2.1.2",
 		"logdown": "^3.3.1",
-		"project-version": "^1.2.0"
+		"project-version": "^1.2.0",
+		"read-pkg": "^5.2.0"
 	},
 	"devDependencies": {
 		"ava": "^3.7.1",
@@ -23,6 +24,12 @@
 		"prettier": "^2.0.5",
 		"xo": "^0.29.1"
 	},
+	"files": [
+		"src",
+		"package.json",
+		"README.md",
+		"CHANGELOG.md"
+	],
 	"keywords": [
 		"capacitor",
 		"ionic",
@@ -41,10 +48,33 @@
 		"type": "git",
 		"url": "git+ssh://git@github.com/bjesuiter/capacitor-sync-version-cli.git"
 	},
-	"files": [
-		"src",
-		"index.js",
-		"README.md",
-		"CHANGELOG.md"
-	]
+	"xo": {
+		"space": false,
+		"rules": {
+			"quotes": [
+				"error",
+				"single",
+				{
+					"allowTemplateLiterals": true
+				}
+			],
+			"prefer-destructuring": [
+				"error",
+				{
+					"array": false,
+					"object": false
+				},
+				{
+					"enforceForRenamedProperties": false
+				}
+			],
+			"no-trailing-spaces": [
+				"error",
+				{
+					"skipBlankLines": true,
+					"ignoreComments": true
+				}
+			]
+		}
+	}
 }
