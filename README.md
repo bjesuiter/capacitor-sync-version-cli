@@ -1,6 +1,10 @@
 # Cap Sync Version (CLI)
 
-This CLI syncs the npm package version to the capacitor android and ios projects.
+<img src="https://img.shields.io/badge/code_style-XO+Prettier-00eaf0">
+<img src="https://img.shields.io/badge/released_with-np-lightgrey">
+<img src="https://img.shields.io/badge/badges_from-shields.io-brightgreen">
+
+> This CLI syncs the npm package version to the capacitor android and ios projects.
 
 Capacitor creates a folder for each platform in the root of your project, like `android`, `ios`, and `electron`.
 Since electron is in beta right now, it's not supported by this tool.
