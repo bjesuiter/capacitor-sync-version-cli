@@ -37,6 +37,7 @@ export async function updateAndroidVersion(newVersionString, allowPrereleaseVers
 	}
 
 	appProperties.versionCode = buildAndroidVersionCode(newVersionString, allowPrereleaseVersions);
+	appProperties.versionCode = `${appProperties.versionCode}`;
 
 	logger.log('New app.properties Content', appProperties);
 	const newPropertiesString = stringifyProperties(appProperties);
