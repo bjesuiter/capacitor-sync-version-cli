@@ -8,7 +8,8 @@
 	},
 	"scripts": {
 		"test": "xo",
-		"start": "./src/index.js"
+		"start": "./src/index.js",
+		"dry-publish": "np --preview"
 	},
 	"dependencies": {
 		"commander": "^5.0.0",
