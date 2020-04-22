@@ -2,12 +2,12 @@
 	"name": "cap-sync-version",
 	"version": "0.0.1",
 	"description": "This CLI syncs the npm package version to the capacitor android and ios projects",
-	"main": "index.js",
+	"main": "./src/index.js",
 	"bin": {
-		"cap-sync-version": "index.js"
+		"cap-sync-version": "./src/index.js"
 	},
 	"scripts": {
-		"start": "./index.js",
+		"start": "./src/index.js",
 		"test": "xo"
 	},
 	"dependencies": {
