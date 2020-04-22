@@ -1,12 +1,15 @@
-import {Command, cli} from 'commander';
+import {Command} from 'commander';
 import projectVersion from 'project-version';
+import readPkg from 'read-pkg';
+import {updateAndroidVersion} from './modules/android';
+
 import logdown from 'logdown';
 const logger = logdown('Cap Sync Version');
 logger.state = {isEnabled: true};
 
 const cli = new Command();
 cli.version(projectVersion, '-v, --version')
-	.option('-a,--android', 'Sync package version to android', true)
+	.option('-a, --android', 'Sync package version to android', true)
 	.option(
 		'-p, --android-allow-prerelease',
 		'Allows prerelease versions for android. Warning: iOS does not support prerelease versions! ' +
@@ -30,10 +33,20 @@ cli.parse(process.argv);
 if (process.argv.slice(2).length === 0) {
 	// Display the help text in red on the console
 	cli.outputHelp();
-	cli.exit(0);
+
+	// eslint-disable-next-line unicorn/no-process-exit
+	process.exit(0);
 }
 
-async function main(cli) {}
+async function main(cli) {
+	const projectPackageJson = await readPkg();
+	const packageVersion = projectPackageJson.version;
+
+	logger.log('Package Version', packageVersion);
+	logger.log('CLI', cli);
+
+	// await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
+}
 
 main(cli).catch(error => {
 	logger.error('Execution Error:', error);
