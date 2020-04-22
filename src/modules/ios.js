@@ -14,13 +14,15 @@ export async function updateIosVersion(newVersionString) {
 	const [versionWithoutPrerelease, prereleaseVersion] = newVersionString.split('-');
 
 	if (prereleaseVersion !== undefined) {
-		logger.warn(`This package has a prerelease version defined. 
-        Since iOS versions can only contain 3 numbers separated by dots, the prerelease version will be ignored!`);
+		logger.warn(`
+		This package has a prerelease version defined. 
+		Since iOS versions can only contain 3 numbers separated by dots, 
+		THE PRERELEASE VERSION WILL BE IGNORED!`);
 	}
 
 	plistObject.CFBundleShortVersionString = versionWithoutPrerelease;
 	plistObject.CFBundleVersion = versionWithoutPrerelease;
-	logger.log(plistObject);
 
 	writePlistFileSync(iosInfoPlistPath, plistObject);
+	logger.log('Updating iOS App Version successful. Please commit all pending changes now.');
 }
