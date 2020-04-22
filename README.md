@@ -1,11 +1,11 @@
 # Cap Sync Version (CLI)
 
-<img src="https://img.shields.io/badge/code_style-XO+Prettier-00eaf0">
-<img src="https://img.shields.io/badge/released_with-np-lightgrey">
-<img src="https://img.shields.io/npm/v/cap-sync-version/latest">
-<img src="https://img.shields.io/npm/l/cap-sync-version">
-<img src="https://img.shields.io/snyk/vulnerabilities/npm/cap-sync-version">
-<img src="https://img.shields.io/badge/badges_from-shields.io-brightgreen">
+![](https://img.shields.io/npm/v/cap-sync-version/latest)
+![](https://img.shields.io/npm/l/cap-sync-version)
+![](https://img.shields.io/snyk/vulnerabilities/npm/cap-sync-version)
+![](https://img.shields.io/badge/code_style-XO+Prettier-00eaf0)
+![](https://img.shields.io/badge/released_with-np-lightgrey)
+![](https://img.shields.io/badge/badges_from-shields.io-brightgreen)
 
 > This CLI syncs the npm package version to the capacitor android and ios projects.
 
