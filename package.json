@@ -7,7 +7,9 @@
 		"cap-sync-version": "./src/index.js"
 	},
 	"scripts": {
-		"test": "xo",
+		"test": "ava",
+		"test:watch": "ava --watch",
+		"xo": "xo",
 		"start": "./src/index.js",
 		"dry-publish": "np --preview"
 	},
