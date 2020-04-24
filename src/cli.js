@@ -29,7 +29,7 @@ cli.version(projectVersion, '-v, --version')
 cli.on('--help', () => {
 	console.log(
 		`\n  General Information: 
-            Version: ${projectVersion}
+            Version: 2.0.1
             Purpose: This CLI syncs the npm package version to the capacitor android and ios projects. 
             Default Behavior: syncs the package version to android and ios, if available
         `
