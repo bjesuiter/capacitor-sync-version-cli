@@ -99,3 +99,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### [0.0.0] - 2020-04-22 - Initial Package Version
 
 Initial Package Creation
+
+---
+
+# FAQ
+
+## Why is there no prerelease support on android anymore since version 2.0?
+
+Note: Periods in example android version codes are for better readability
+
+1. A version of 2.3.5-0 would have a version code of `2.030.500`
+   and the version 2.3.5 would also have the version code `2.030.500`, since the prerelease digits are zero per default.
+2. A version of 2.3.5-1 would have a higher version code as 2.3.5, even though 2.3.5 is the final version of 2.3.5-1.
+   Version 2.3.5-1 would have the code `2.030.501`, but version 2.3.5 would have the code `2.030.500`, which would result in rejection of the built apk or aab by the google play console.
+3. iOS is not able to encode prerelease versions like this altogether.
+
+One could fix above errors, but not without making the version generation algorithm more complicated and less intuitive.
+And when looking at the fact, that iOS doesn't even support prerelease versions, I'll simply increase the headroom of patch versions (where the developer can decide to mark them as beta or something).

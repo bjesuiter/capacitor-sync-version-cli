@@ -74,25 +74,33 @@ export function buildAndroidVersionCode(newVersionString, allowPrereleaseVersion
 	if (versionMajor > '2147') {
 		throw new Error(`You've reached the maximum major version number of 2147. 
 		A higher major version can't be added to the android versionCode field. 
-		See https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
+		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
 	}
 
 	if (versionMinor > 99) {
 		throw new Error(`You've reached the maximum of 100 minor versions inside major version ${versionMajor}. 
 		Please increase version to the next major version. 
-		See for details: https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
+		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
 	}
 
 	if (versionPatch > 99) {
 		throw new Error(`You've reached the maximum of 100 patch versions inside major & minor version ${versionMajor}.${versionMinor}. 
 		Please increase version to the next minor or major version instead. 
-		See for details: https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
+		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
 	}
 
 	if (allowPrereleaseVersions && versionPrerelease > 99) {
-		throw new Error(`You've reached the maximum of 100 prerelease versions for version ${versionMajor}.${versionMinor}.${versionPatch}. 
+		throw new Error(`You've reached the maximum of 99 prerelease versions for version ${versionMajor}.${versionMinor}.${versionPatch}. 
 		Please increase version to the next patch, minor or major version instead. 
-		See for details: https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
+		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
+	}
+
+	if (allowPrereleaseVersions && versionPrerelease < 1) {
+		throw new Error(`A prerelease version of zero can't be set for android, since it would result in the same version code for android as the final non-prerelease version. 
+		Example: A Version of 2.2.0-0 would have a version code of 2.020.000(periods added for better readability) 
+		and the version 2.2.0 would also have the version code 2.020.000, since the prerelease reserved digits are zero.
+		Please use at least a prerelease version of 1.
+		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
 	}
 
 	let versionCode = versionMajor * 1000000;
