@@ -58,6 +58,7 @@ export async function updateAndroidVersion(newVersionString) {
  * - its more useful to have more room in the patch and minor levels
  *
  * @param {*} newVersionString
+ * @returns {number}
  */
 export function buildAndroidVersionCode(newVersionString) {
 	// Calculate new versionCode, based on https://medium.com/@manas/manage-your-android-app-s-versioncode-versionname-with-gradle-7f9c5dcf09bf
@@ -88,5 +89,5 @@ export function buildAndroidVersionCode(newVersionString) {
 	let versionCode = versionMajor * 1000000;
 	versionCode += versionMinor * 1000;
 	versionCode += versionPatch;
-	return versionCode;
+	return Number.parseInt(versionCode, 10);
 }
