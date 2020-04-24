@@ -22,18 +22,13 @@ export async function updateAndroidVersion(newVersionString) {
 	// Note: app.properties is a manually created custom file which is used in build.gradle
 	// to set the android versionName and versionCode variables
 	const appProperties = await parsePropertiesFile(androidAppPropertiesPath);
-	const {versionPrerelease, versionWithoutPrerelease} = splitVersionIntoParts(newVersionString);
 
-	if (versionPrerelease !== undefined) {
-		throw new Error(`This package has a prerelease version number (${newVersionString}), 
-		but prerelease versions are not allowed (see https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/README.md#why-is-there-no-prerelease-support-on-android-anymore-since-version-20).
-		Please change your package version to a version without prerelease part`);
-	}
+	// Set new version code
+	appProperties.versionCode = `${buildAndroidVersionCode(newVersionString)}`;
 
+	// To make sure that newVersionString does not contain any prerelease numbers
+	const {versionWithoutPrerelease} = splitVersionIntoParts(newVersionString);
 	appProperties.versionName = versionWithoutPrerelease;
-
-	appProperties.versionCode = buildAndroidVersionCode(newVersionString);
-	appProperties.versionCode = `${appProperties.versionCode}`;
 
 	logger.log('New app.properties Content', appProperties);
 	const newPropertiesString = stringifyProperties(appProperties);
@@ -62,7 +57,13 @@ export async function updateAndroidVersion(newVersionString) {
  */
 export function buildAndroidVersionCode(newVersionString) {
 	// Calculate new versionCode, based on https://medium.com/@manas/manage-your-android-app-s-versioncode-versionname-with-gradle-7f9c5dcf09bf
-	const {versionMajor, versionMinor, versionPatch} = splitVersionIntoParts(newVersionString);
+	const {versionMajor, versionMinor, versionPatch, versionPrerelease} = splitVersionIntoParts(newVersionString);
+
+	if (versionPrerelease !== undefined) {
+		throw new Error(`This package has a prerelease version number (${newVersionString}), 
+		but prerelease versions are not allowed (see https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/README.md#why-is-there-no-prerelease-support-on-android-anymore-since-version-20).
+		Please change your package version to a version without prerelease part`);
+	}
 
 	const maxMajor = 2147;
 	const maxMinor = 1000;
