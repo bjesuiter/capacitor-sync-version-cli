@@ -77,10 +77,6 @@ Options:
 Package created after  
  https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
 
-## TODO's
-
--   Creating tests for at least for the function `buildAndroidVersionCode` to avoid regressions.
-
 ---
 
 ## Changelog
