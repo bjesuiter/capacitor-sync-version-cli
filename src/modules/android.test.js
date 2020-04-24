@@ -34,3 +34,22 @@ test('Function buildAndroidVersionCode throws on patch version too high', versio
 test('Function buildAndroidVersionCode throws not major version on edge', versionCodeGenNotThrowing, '2147.0.0');
 test('Function buildAndroidVersionCode throws not minor version on edge', versionCodeGenNotThrowing, '2.999.0');
 test('Function buildAndroidVersionCode throws not patch version on edge', versionCodeGenNotThrowing, '2.0.999');
+
+// Third Test Area => Check consistency of versionCodes (greater versions MUST produce greater version codes for google play console);
+
+function versionCodeGenConsistency(t, input) {
+	const versionCodeLower = buildAndroidVersionCode(input[0]);
+	const versionCodeHigher = buildAndroidVersionCode(input[1]);
+	t.true(versionCodeHigher > versionCodeLower);
+}
+
+versionCodeGenConsistency.title = (providedTitle, input) =>
+	`VersionCode for ${input[1]} should be greater than for ${input[0]}`;
+
+test('', versionCodeGenConsistency, ['0.0.1', '0.0.2']);
+test('', versionCodeGenConsistency, ['0.0.1', '0.0.10']);
+test('', versionCodeGenConsistency, ['0.0.1', '0.1.0']);
+test('', versionCodeGenConsistency, ['0.0.2', '0.1.0']);
+test('', versionCodeGenConsistency, ['0.1.0', '0.2.0']);
+test('', versionCodeGenConsistency, ['0.2.0', '1.0.0']);
+test('', versionCodeGenConsistency, ['1.0.0', '2.0.0']);
