@@ -61,15 +61,12 @@ Usage: cap-sync-version [options]
 Options:
   -v, --version                   output the version number
   -a, --android                   Sync package version to android. It will not update iOS, unless --ios is specified. (default: false)
-  -p, --android-allow-prerelease  Allows prerelease versions for android.
-                                  Warning: iOS does not support prerelease versions!
-                                  So If you create a npm package prerelease version and allow prereleases for
-                                  android, the ios version will simply be the version without prerelease number! (default: false)
+  -p, --android-allow-prerelease  Note: This flag is disabled since 2.0.0 and will be ignored, because it produced unrelieable version codes in android.  (default: false)
   -i, --ios                       Sync package version to ios.  It will not update Android, unless --android is specified. (default: false)
   -h, --help                      display help for command
 
   General Information:
-            Version: 0.0.1
+            Version: 2.0.0
             Purpose: This CLI syncs the npm package version to the capacitor android and ios projects.
             Default Behavior: syncs the package version to android and ios, if available
 
@@ -91,6 +88,15 @@ Package created after
 All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+### [2.0.1] - 2020-04-24
+
+-   Updates for Readme & Changelog
+
+### [2.0.0] - 2020-04-24
+
+-   prohibit generating versions with prerelease part
+-   removes all code for prerelease versionCode generation for android to avoid instabilities in the version code
 
 ### [1.0.1] - 2020-04-22
 
