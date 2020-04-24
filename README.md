@@ -85,6 +85,10 @@ All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+### [2.0.3 & 2.0.4] - 2020-04-24
+
+-   Update readme
+
 ### [2.0.2] - 2020-04-24
 
 -   Add tests for buildAndroidVersionCode function to make sure all android version code generation works correctly and especially continuously
