@@ -17,8 +17,7 @@ cli.version(projectVersion, '-v, --version')
 	)
 	.option(
 		'-p, --android-allow-prerelease',
-		'Allows prerelease versions for android. Warning: iOS does not support prerelease versions! ' +
-			'So If you create a npm package prerelease version and allow prereleases for android, the ios version will simply be the version without prerelease number!',
+		'Note: This flag is disabled since 2.0.0 and will be ignored, because it produced unrelieable version codes in android. ',
 		false
 	)
 	.option(
@@ -53,7 +52,7 @@ async function main(cli) {
 	logger.log('Updating capacitor project versions to: ', packageVersion);
 
 	if (cli.android) {
-		await updateAndroidVersion(packageVersion, cli.androidAllowPrerelease);
+		await updateAndroidVersion(packageVersion);
 	}
 
 	if (cli.ios) {
