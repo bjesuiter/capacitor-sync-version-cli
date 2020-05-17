@@ -14,7 +14,7 @@
 		"dry-publish": "np --preview"
 	},
 	"dependencies": {
-		"commander": "^5.0.0",
+		"commander": "^5.1.0",
 		"fs-extra": "^9.0.0",
 		"java-props": "^2.1.2",
 		"logdown": "^3.3.1",
