@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"commander": "^5.1.0",
-		"fs-extra": "^9.0.0",
+		"fs-extra": "^9.0.1",
 		"java-props": "^2.1.2",
 		"logdown": "^3.3.1",
 		"project-version": "^1.2.0",
