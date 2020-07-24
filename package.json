@@ -18,7 +18,7 @@
 		"fs-extra": "^9.0.0",
 		"java-props": "^2.1.2",
 		"logdown": "^3.3.1",
-		"project-version": "^1.2.0",
+		"project-version": "^1.2.1",
 		"read-pkg": "^5.2.0",
 		"simple-plist": "^1.1.0"
 	},
