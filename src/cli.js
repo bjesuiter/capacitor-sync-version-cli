@@ -24,7 +24,12 @@ cli.version(projectVersion, '-v, --version')
 		'-i, --ios',
 		'Sync package version to ios.  It will not update Android, unless --android is specified.',
 		false
-	);
+	)
+	.option(
+		'-plist, --plist [files...]',
+		'Add additional plists to modify (ios only)',
+		false
+	)
 
 cli.on('--help', () => {
 	console.log(
@@ -50,13 +55,23 @@ async function main(cli) {
 	const packageVersion = projectPackageJson.version;
 
 	logger.log('Updating capacitor project versions to: ', packageVersion);
-
+	logger.log('sync android versions? ', cli.android || false);
+	logger.log('sync ios versions? ', cli.ios || false);
 	if (cli.android) {
 		await updateAndroidVersion(packageVersion);
 	}
 
 	if (cli.ios) {
-		await updateIosVersion(packageVersion);
+		let plistFiles;
+		if (cli.plist) {
+			plistFiles = (cli.plist || "").split(",") || [];
+			plistFiles = plistFiles.map((f)=>f.trim());
+		} else {
+			plistFiles = [];
+		}
+
+		logger.log({plistFiles});
+		await updateIosVersion(packageVersion, plistFiles);
 	}
 }
 
