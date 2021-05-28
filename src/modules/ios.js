@@ -7,12 +7,10 @@ logger.state = {isEnabled: true};
 // Path to the Info.plist file which contains the version number for iOS Apps
 export const iosInfoPlistPath = './ios/App/App/Info.plist';
 
-export async function updateIosVersion(newVersionString) {
+export async function updateIosVersion(newVersionString, plist=[]) {
 	logger.log('Updating iOS App Version...');
 
-	const plistObject = parsePlistFileSync(iosInfoPlistPath);
 	const [versionWithoutPrerelease, prereleaseVersion] = newVersionString.split('-');
-
 	if (prereleaseVersion !== undefined) {
 		logger.warn(`
 		This package has a prerelease version defined. 
@@ -20,9 +18,17 @@ export async function updateIosVersion(newVersionString) {
 		THE PRERELEASE VERSION WILL BE IGNORED!`);
 	}
 
-	plistObject.CFBundleShortVersionString = versionWithoutPrerelease;
-	plistObject.CFBundleVersion = versionWithoutPrerelease;
-
-	writePlistFileSync(iosInfoPlistPath, plistObject);
+	// Join additional plist files (incase of additional targets like AppClips)
+	const plistPaths = [iosInfoPlistPath, ...plist];
+	
+	for (let path of plistPaths) {
+		logger.log("Updating file " + path);
+		const plistObject = parsePlistFileSync(path);
+	
+		plistObject.CFBundleShortVersionString = versionWithoutPrerelease;
+		plistObject.CFBundleVersion = versionWithoutPrerelease;
+	
+		writePlistFileSync(path, plistObject);
+	}
 	logger.log('Updating iOS App Version successful. Please commit all pending changes now.');
 }
