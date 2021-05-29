@@ -1,6 +1,8 @@
+#!/usr/bin/env node
+
 import {Command} from 'commander';
 import projectVersion from 'project-version';
-import readPkg from 'read-pkg';
+import * as readPkg from 'read-pkg';
 import {updateAndroidVersion} from './modules/android.js';
 import {updateIosVersion} from './modules/ios.js';
 
