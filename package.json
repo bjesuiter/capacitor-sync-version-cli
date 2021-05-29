@@ -5,7 +5,7 @@
 	"type": "module",
 	"exports": "./src/cli.js",
 	"bin": {
-		"cap-sync-version": "./src/index.js"
+		"cap-sync-version": "./src/cli.js"
 	},
 	"engines": {
 		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
@@ -14,7 +14,7 @@
 		"test": "ava",
 		"test:watch": "ava --watch",
 		"xo": "xo",
-		"start": "./src/index.js",
+		"start": "./src/cli.js",
 		"dry-publish": "np --preview"
 	},
 	"dependencies": {
