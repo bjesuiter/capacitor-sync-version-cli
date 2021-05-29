@@ -23,7 +23,7 @@
 		"simple-plist": "^1.1.0"
 	},
 	"devDependencies": {
-		"ava": "^3.7.1",
+		"ava": "^3.15.0",
 		"esm": "^3.2.25",
 		"np": "^6.2.2",
 		"prettier": "^2.0.5",
