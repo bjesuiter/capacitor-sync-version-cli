@@ -14,7 +14,7 @@ versionCodeGenMacro.title = macroTitleFunction;
 
 test('Function buildAndroidVersionCode', versionCodeGenMacro, '0.0.1', 1);
 test('Function buildAndroidVersionCode', versionCodeGenMacro, '0.1.0', 1000);
-test('Function buildAndroidVersionCode', versionCodeGenMacro, '1.0.0', 1000000);
+test('Function buildAndroidVersionCode', versionCodeGenMacro, '1.0.0', 1_000_000);
 
 // Second Test Area => throwing tests for buildAndroidVersionCode
 

@@ -21,7 +21,7 @@ export async function updateIosVersion(newVersionString, plist = []) {
 	// Join additional plist files (incase of additional targets like AppClips)
 	const plistPaths = [iosInfoPlistPath, ...plist];
 
-	for (let path of plistPaths) {
+	for (const path of plistPaths) {
 		logger.log('Updating file ' + path);
 		const plistObject = parsePlistFileSync(path);
 
@@ -30,5 +30,6 @@ export async function updateIosVersion(newVersionString, plist = []) {
 
 		writePlistFileSync(path, plistObject);
 	}
+
 	logger.log('Updating iOS App Version successful. Please commit all pending changes now.');
 }

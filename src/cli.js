@@ -3,10 +3,11 @@
 import {Command} from 'commander';
 import projectVersion from 'project-version';
 import {readPackageAsync} from 'read-pkg';
+import logdown from 'logdown';
 import {updateAndroidVersion} from './modules/android.js';
 import {updateIosVersion} from './modules/ios.js';
 
-import logdown from 'logdown';
+// Logdown initialization
 const logger = logdown('Cap Sync Version');
 logger.state = {isEnabled: true};
 
@@ -76,6 +77,5 @@ async function main(cli) {
 main(cli).catch(error => {
 	logger.error(error);
 	console.log('\n');
-	// TODO: Display the help text in red on the console
 	cli.outputHelp();
 });

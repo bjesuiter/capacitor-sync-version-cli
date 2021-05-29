@@ -87,7 +87,7 @@ export function buildAndroidVersionCode(newVersionString) {
 		For details, look at the function 'buildAndroidVersionCode' in https://github.com/bjesuiter/capacitor-sync-version-cli/blob/master/src/modules/android.js`);
 	}
 
-	let versionCode = Number.parseInt(versionMajor, 10) * 1000000;
+	let versionCode = Number.parseInt(versionMajor, 10) * 1_000_000;
 	versionCode += Number.parseInt(versionMinor, 10) * 1000;
 	versionCode += Number.parseInt(versionPatch, 10);
 	return versionCode;
