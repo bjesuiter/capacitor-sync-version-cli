@@ -97,6 +97,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 -   Contribution by [Lucas Zeer](https://github.com/Lucaszw):
     Possibility to add additional PList files on iOS as targets for version sync
+-   BREAKING CHANGE: This CLI is now a pure ESM Package, which means, it needs NodeJS > 12.20 to run
+    (see 'engines' field in package.json for more details)
+-   Updated all dev & normal dependencies to fix security problems
 
 ### [2.0.3 & 2.0.4] - 2020-04-24
 
