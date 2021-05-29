@@ -74,12 +74,15 @@ Options:
 
 ## Credits
 
-Package created after  
- https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
-
 Big Thanks for Contributions to
 
 -   [Lucas Zeer](https://github.com/Lucaszw)
+
+Package created after:  
+ https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
+
+Pure ESM Package modeled after:  
+[Sindre Sorhus - Pure ESM Package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#pure-esm-package)
 
 ---
 

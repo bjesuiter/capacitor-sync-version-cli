@@ -1,5 +1,5 @@
 import test from 'ava';
-import {buildAndroidVersionCode} from './android';
+import {buildAndroidVersionCode} from './android.js';
 
 // General Helper Functions
 const macroTitleFunction = (providedTitle, input, expected) => `${providedTitle} ${input} => ${expected}`.trim();

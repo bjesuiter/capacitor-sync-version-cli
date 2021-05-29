@@ -1,3 +1,3 @@
 export default {
-	require: ['esm']
+	// require: ['esm']
 };

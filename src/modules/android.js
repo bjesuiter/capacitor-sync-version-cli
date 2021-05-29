@@ -2,7 +2,7 @@ import {parseFile as parsePropertiesFile, stringify as stringifyProperties} from
 import fs from 'fs-extra';
 
 import logdown from 'logdown';
-import {splitVersionIntoParts} from './shared';
+import {splitVersionIntoParts} from './shared.js';
 const logger = logdown('Cap Sync Version - Android');
 logger.state = {isEnabled: true};
 

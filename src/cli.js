@@ -1,8 +1,8 @@
 import {Command} from 'commander';
 import projectVersion from 'project-version';
 import readPkg from 'read-pkg';
-import {updateAndroidVersion} from './modules/android';
-import {updateIosVersion} from './modules/ios';
+import {updateAndroidVersion} from './modules/android.js';
+import {updateIosVersion} from './modules/ios.js';
 
 import logdown from 'logdown';
 const logger = logdown('Cap Sync Version');
@@ -25,11 +25,7 @@ cli.version(projectVersion, '-v, --version')
 		'Sync package version to ios.  It will not update Android, unless --android is specified.',
 		false
 	)
-	.option(
-		'-plist, --plist [files...]',
-		'Add additional plists to modify (ios only)',
-		false
-	)
+	.option('-plist, --plist [files...]', 'Add additional plists to modify (ios only)', false);
 
 cli.on('--help', () => {
 	console.log(
@@ -64,8 +60,8 @@ async function main(cli) {
 	if (cli.ios) {
 		let plistFiles;
 		if (cli.plist) {
-			plistFiles = (cli.plist || "").split(",") || [];
-			plistFiles = plistFiles.map((f)=>f.trim());
+			plistFiles = (cli.plist || '').split(',') || [];
+			plistFiles = plistFiles.map(f => f.trim());
 		} else {
 			plistFiles = [];
 		}
