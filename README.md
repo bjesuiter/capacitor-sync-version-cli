@@ -63,6 +63,7 @@ Options:
   -a, --android                   Sync package version to android. It will not update iOS, unless --ios is specified. (default: false)
   -p, --android-allow-prerelease  Note: This flag is disabled since 2.0.0 and will be ignored, because it produced unrelieable version codes in android.  (default: false)
   -i, --ios                       Sync package version to ios.  It will not update Android, unless --android is specified. (default: false)
+  -plist, --plist [files...]      Add additional plists to modify (ios only) (default: false)
   -h, --help                      display help for command
 
   General Information:
