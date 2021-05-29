@@ -93,10 +93,14 @@ All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-### Next Version
+### [3.0.1] - 2021-05-29
+
+-   Fixed Version Numbers in Changelog for 3.0.0 & 3.0.1
+
+### [3.0.0] - 2021-05-29
 
 -   Contribution by [Lucas Zeer](https://github.com/Lucaszw):
-    Possibility to add additional PList files on iOS as targets for version sync
+    Possibility to add additional Plist files on iOS as targets for version sync
 -   BREAKING CHANGE: This CLI is now a pure ESM Package, which means, it needs NodeJS > 12.20 to run
     (see 'engines' field in package.json for more details)
 -   Updated all dev & normal dependencies to fix security problems
