@@ -2,7 +2,7 @@
 
 import {Command} from 'commander';
 import projectVersion from 'project-version';
-import * as readPkg from 'read-pkg';
+import {readPackageAsync} from 'read-pkg';
 import {updateAndroidVersion} from './modules/android.js';
 import {updateIosVersion} from './modules/ios.js';
 
@@ -49,7 +49,7 @@ if (process.argv.slice(2).length === 0) {
 }
 
 async function main(cli) {
-	const projectPackageJson = await readPkg();
+	const projectPackageJson = await readPackageAsync();
 	const packageVersion = projectPackageJson.version;
 
 	logger.log('Updating capacitor project versions to: ', packageVersion);
