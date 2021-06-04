@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import {Command} from 'commander';
-import {readPackageAsync} from 'read-pkg';
+import {readPackageSync, readPackageAsync} from 'read-pkg';
 import logdown from 'logdown';
 import {dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -14,7 +14,7 @@ logger.state = {isEnabled: true};
 
 // get cap-sync-version cli version
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const {version: cliVersion} = await readPackageAsync({cwd: join(__dirname, '..')});
+const {version: cliVersion} = readPackageSync({cwd: join(__dirname, '..')});
 
 const cli = new Command();
 cli.version(cliVersion, '-v, --version')
