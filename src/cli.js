@@ -47,32 +47,29 @@ cli.on('--help', () => {
 
 cli.parse(process.argv);
 
-if (process.argv.slice(2).length === 0) {
-	// Set android and ios flags to true when no params are given.
-	// This allows deactivation of either ios or android, when the other is given explicitly
-	cli.android = true;
-	cli.ios = true;
-}
-
 async function main(cli) {
+	const options = cli.opts();
+
+	if (!options.android && !options.ios) {
+		// Set android and ios flags to true when neither os given
+		// This allows deactivation of either ios or android, when the other is given explicitly
+		options.android = true;
+		options.ios = true;
+	}
+
 	const projectPackageJson = await readPackageAsync();
 	const packageVersion = projectPackageJson.version;
 
 	logger.log('Updating capacitor project versions to: ', packageVersion);
-	logger.log('sync android versions? ', cli.android || false);
-	logger.log('sync ios versions? ', cli.ios || false);
-	if (cli.android) {
+	logger.log('sync android versions? ', options.android || false);
+	logger.log('sync ios versions? ', options.ios || false);
+	if (options.android) {
 		await updateAndroidVersion(packageVersion);
 	}
 
-	if (cli.ios) {
-		let plistFiles;
-		if (cli.plist) {
-			plistFiles = (cli.plist || '').split(',') || [];
-			plistFiles = plistFiles.map(f => f.trim());
-		} else {
-			plistFiles = [];
-		}
+	if (options.ios) {
+		let plistFiles = options.plist || [];
+		plistFiles = plistFiles.map(f => f.trim());
 
 		logger.log({plistFiles});
 		await updateIosVersion(packageVersion, plistFiles);
