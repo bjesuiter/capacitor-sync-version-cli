@@ -93,6 +93,18 @@ All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+### [3.0.2] - 2021-07-10
+
+-   Update Dependencies:
+
+    -   commander to 8.0.0
+    -   some `npm audit fix` updates
+    -   xo linting package
+
+-   includes [PR 13](https://github.com/bjesuiter/capacitor-sync-version-cli/pull/13) by [Lucas Zeer](https://github.com/Lucaszw)
+    -   fixes commander 7.X options handling change (new: cli.opts property)
+    -   fixes handling of default plattforms to update npm version for
+
 ### [3.0.1] - 2021-05-29
 
 -   Fixed Version Numbers in Changelog for 3.0.0 & 3.0.1
