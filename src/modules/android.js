@@ -15,7 +15,7 @@ export async function updateAndroidVersion(newVersionString) {
 	const appPropertiesExist = await fs.exists(androidAppPropertiesPath);
 	if (appPropertiesExist === false) {
 		throw new Error(
-			`The file ${androidAppPropertiesPath} does not exist. => Please consult the readme of cap-sync-version on how to setup android version sync.`
+			`The file ${androidAppPropertiesPath} does not exist. => Please consult the readme of cap-sync-version on how to setup android version sync.`,
 		);
 	}
 

@@ -12,7 +12,7 @@ import {updateIosVersion} from './modules/ios.js';
 const logger = logdown('Cap Sync Version');
 logger.state = {isEnabled: true};
 
-// get cap-sync-version cli version
+// Get cap-sync-version cli version
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const {version: cliVersion} = readPackageSync({cwd: join(__dirname, '..')});
 
@@ -21,17 +21,17 @@ cli.version(cliVersion, '-v, --version')
 	.option(
 		'-a, --android',
 		'Sync package version to android. It will not update iOS, unless --ios is specified.',
-		false
+		false,
 	)
 	.option(
 		'-p, --android-allow-prerelease',
 		'Note: This flag is disabled since 2.0.0 and will be ignored, because it produced unrelieable version codes in android. ',
-		false
+		false,
 	)
 	.option(
 		'-i, --ios',
 		'Sync package version to ios.  It will not update Android, unless --android is specified.',
-		false
+		false,
 	)
 	.option('-plist, --plist [files...]', 'Add additional plists to modify (ios only)', false);
 
@@ -41,7 +41,7 @@ cli.on('--help', () => {
             Version: ${cliVersion}
             Purpose: This CLI syncs the npm package version to the capacitor android and ios projects. 
             Default Behavior: syncs the package version to android and ios, if available
-        `
+        `,
 	);
 });
 
