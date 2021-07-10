@@ -11,7 +11,7 @@
 		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
 	},
 	"scripts": {
-		"test": "ava",
+		"test": "ava && xo",
 		"test:watch": "ava --watch",
 		"xo": "xo",
 		"start": "./src/cli.js",
