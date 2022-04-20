@@ -1,6 +1,6 @@
-import {readFileSync as parsePlistFileSync, writeFileSync as writePlistFileSync} from 'simple-plist';
-
+import SimplePlist from 'simple-plist';
 import logdown from 'logdown';
+
 const logger = logdown('Cap Sync Version - iOS');
 logger.state = {isEnabled: true};
 
@@ -23,12 +23,12 @@ export async function updateIosVersion(newVersionString, plist = []) {
 
 	for (const path of plistPaths) {
 		logger.log('Updating file ' + path);
-		const plistObject = parsePlistFileSync(path);
+		const plistObject = SimplePlist.readFileSync(path);
 
 		plistObject.CFBundleShortVersionString = versionWithoutPrerelease;
 		plistObject.CFBundleVersion = versionWithoutPrerelease;
 
-		writePlistFileSync(path, plistObject);
+		SimplePlist.writeFileSync(path, plistObject);
 	}
 
 	logger.log('Updating iOS App Version successful. Please commit all pending changes now.');
