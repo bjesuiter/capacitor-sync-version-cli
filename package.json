@@ -15,7 +15,8 @@
 		"test:watch": "ava --watch",
 		"xo": "xo",
 		"start": "./src/cli.js",
-		"dry-publish": "np --preview"
+		"dry-publish": "np --preview", 
+		"prettier": "prettier --write ."
 	},
 	"dependencies": {
 		"commander": "^8.0.0",
@@ -29,7 +30,7 @@
 	"devDependencies": {
 		"ava": "^3.15.0",
 		"np": "^7.5.0",
-		"prettier": "^2.3.2",
+		"prettier": "^2.8.4",
 		"xo": "^0.53.1"
 	},
 	"files": [
