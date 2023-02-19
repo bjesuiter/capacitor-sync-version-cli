@@ -94,12 +94,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-### 3.0.3 - 2021-02-19 
+### v3.0.3 & v3.0.4 - 2021-02-19 
 
 - Update Dependencies (see exact commits at the end of this github release)
+- Note: 3.0.4 has this chnagelog published to npm (missing in 3.0.3)
 
 
-### 3.0.2 - 2021-07-10
+### v3.0.2 - 2021-07-10
 
 -   Update Dependencies:
 
@@ -111,11 +112,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     -   fixes commander 7.X options handling change (new: cli.opts property)
     -   fixes handling of default plattforms to update npm version for
 
-### 3.0.1 - 2021-05-29
+### v3.0.1 - 2021-05-29
 
 -   Fixed Version Numbers in Changelog for 3.0.0 & 3.0.1
 
-### 3.0.0 - 2021-05-29
+### v3.0.0 - 2021-05-29
 
 -   Contribution by [Lucas Zeer](https://github.com/Lucaszw):
     Possibility to add additional Plist files on iOS as targets for version sync
