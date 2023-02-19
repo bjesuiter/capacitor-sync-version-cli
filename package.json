@@ -19,7 +19,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "commander": "^8.0.0",
+    "commander": "^10.0.0",
     "fs-extra": "^11.1.0",
     "java-props": "^2.3.1",
     "logdown": "^3.3.1",
