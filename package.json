@@ -1,6 +1,6 @@
 {
   "name": "cap-sync-version",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "This CLI syncs the npm package version to the capacitor android and ios projects",
   "type": "module",
   "exports": "./src/cli.js",
