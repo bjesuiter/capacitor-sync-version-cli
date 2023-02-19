@@ -94,12 +94,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-### [3.0.3] - 2021-02-19 
+### 3.0.3 - 2021-02-19 
 
 - Update Dependencies (see exact commits at the end of this github release)
 
 
-### [3.0.2] - 2021-07-10
+### 3.0.2 - 2021-07-10
 
 -   Update Dependencies:
 
@@ -111,11 +111,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     -   fixes commander 7.X options handling change (new: cli.opts property)
     -   fixes handling of default plattforms to update npm version for
 
-### [3.0.1] - 2021-05-29
+### 3.0.1 - 2021-05-29
 
 -   Fixed Version Numbers in Changelog for 3.0.0 & 3.0.1
 
-### [3.0.0] - 2021-05-29
+### 3.0.0 - 2021-05-29
 
 -   Contribution by [Lucas Zeer](https://github.com/Lucaszw):
     Possibility to add additional Plist files on iOS as targets for version sync
@@ -124,32 +124,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   Updated all dev & normal dependencies to fix security problems
 -   fix version reporting for cap-sync-version cli
 
-### [2.0.3 & 2.0.4] - 2020-04-24
+### 2.0.3 & 2.0.4 - 2020-04-24
 
 -   Update readme
 
-### [2.0.2] - 2020-04-24
+### 2.0.2 - 2020-04-24
 
 -   Add tests for buildAndroidVersionCode function to make sure all android version code generation works correctly and especially continuously
 
-### [2.0.1] - 2020-04-24
+### 2.0.1 - 2020-04-24
 
 -   Updates for Readme & Changelog
 
-### [2.0.0] - 2020-04-24
+### 2.0.0 - 2020-04-24
 
 -   prohibit generating versions with prerelease part
 -   removes all code for prerelease versionCode generation for android to avoid instabilities in the version code
 
-### [1.0.1] - 2020-04-22
+### 1.0.1 - 2020-04-22
 
 -   Improve Badges in Readme
 
-### [1.0.0] - 2020-04-22 - Initial Release
+### 1.0.0 - 2020-04-22 - Initial Release
 
 -   Feature: ability to sync versions of android and ios capacitor projects with the npm package version
 
-### [0.0.0] - 2020-04-22 - Initial Package Version
+### 0.0.0 - 2020-04-22 - Initial Package Version
 
 Initial Package Creation
 
