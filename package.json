@@ -16,6 +16,7 @@
     "xo": "xo",
     "start": "./src/cli.js",
     "dry-publish": "np --any-branch --preview ",
+    "deploy": "np --any-branch",
     "prettier": "prettier --write ."
   },
   "dependencies": {
