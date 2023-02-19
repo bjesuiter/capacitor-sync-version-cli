@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-import {Command} from 'commander';
-import {readPackageSync, readPackageAsync} from 'read-pkg';
-import logdown from 'logdown';
 import {dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import process from 'node:process';
+import {readPackageSync, readPackageAsync} from 'read-pkg';
+import logdown from 'logdown';
+import {Command} from 'commander';
 import {updateAndroidVersion} from './modules/android.js';
 import {updateIosVersion} from './modules/ios.js';
 
@@ -76,8 +77,10 @@ async function main(cli) {
 	}
 }
 
-main(cli).catch(error => {
+try {
+	await main(cli);
+} catch (error) {
 	logger.error(error);
 	console.log('\n');
 	cli.outputHelp();
-});
+}
