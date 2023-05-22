@@ -3,7 +3,7 @@
 import {dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import process from 'node:process';
-import {readPackageSync, readPackageAsync} from 'read-pkg';
+import {readPackageSync, readPackage} from 'read-pkg';
 import logdown from 'logdown';
 import {Command} from 'commander';
 import {updateAndroidVersion} from './modules/android.js';
@@ -58,7 +58,7 @@ async function main(cli) {
 		options.ios = true;
 	}
 
-	const projectPackageJson = await readPackageAsync();
+	const projectPackageJson = await readPackage();
 	const packageVersion = projectPackageJson.version;
 
 	logger.log('Updating capacitor project versions to: ', packageVersion);
