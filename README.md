@@ -17,6 +17,12 @@ mainly because this sync is not 1 to 1 possible without assumtions.
 This cli uses an automatic alogrithm to calculate the android versionCode based on the version string from package.json.
 The android versionCode is an ever increasing integer-32 defining the unique version for each app.
 
+## Install
+
+```
+npm i cap-sync-version
+```
+
 ## Required Setup for Android
 
 1. Create a file called `app.properties` under `./android/app/`.
