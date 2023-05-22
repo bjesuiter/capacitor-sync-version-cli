@@ -1,6 +1,6 @@
 # Cap Sync Version (CLI)
 
-![](https://img.shields.io/npm/v/cap-sync-version/latest)
+[![](https://img.shields.io/npm/v/cap-sync-version/latest)](https://www.npmjs.com/package/cap-sync-version)
 ![](https://img.shields.io/npm/l/cap-sync-version)
 ![](https://img.shields.io/snyk/vulnerabilities/npm/cap-sync-version)
 ![](https://img.shields.io/badge/code_style-XO%2BPrettier-00eaf0)
@@ -98,6 +98,10 @@ Pure ESM Package modeled after:
 All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+### v3.0.6 - 2023-05-23
+
+- Update npm shield in readme to be able to click on it to come to npm
 
 ### v3.0.5 - 2023-05-22
 
