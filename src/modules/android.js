@@ -12,43 +12,43 @@ export const androidAppPropertiesPath = './android/app/app.properties';
 export const androidGradleFilePath = './android/app/build.gradle';
 
 async function transformGradleAndCreateAppProperties() {
-    // Read gradle
-    let gradleFileContent = (await fs.readFile(androidGradleFilePath)).toString();
+	// Read gradle
+	let gradleFileContent = (await fs.readFile(androidGradleFilePath)).toString();
 
-    // Check if needs to be transformed
-    if (!gradleFileContent.includes('appProperties.getProperty(\'versionCode\').toInteger()')) {
-        // These are the new lines to be added after `apply plugin: 'com.android.application'`
-        const newLines = 'def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }';
+	// Check if needs to be transformed
+	if (!gradleFileContent.includes('appProperties.getProperty(\'versionCode\').toInteger()')) {
+		// These are the new lines to be added after `apply plugin: 'com.android.application'`
+		const newLines = 'def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }';
 
-        // Add new lines
-        gradleFileContent = gradleFileContent.replace(
-            "apply plugin: 'com.android.application'",
-            `apply plugin: 'com.android.application'\n${newLines}`,
-        );
+		// Add new lines
+		gradleFileContent = gradleFileContent.replace(
+			"apply plugin: 'com.android.application'",
+			`apply plugin: 'com.android.application'\n${newLines}`,
+		);
 
-        // Change versionCode and versionName
-        gradleFileContent = gradleFileContent.replace(
-            /versionCode .*/,
-            'versionCode appProperties.getProperty(\'versionCode\').toInteger()',
-        );
-        gradleFileContent = gradleFileContent.replace(
-            /versionName .*/,
-            'versionName appProperties.getProperty(\'versionName\')',
-        );
+		// Change versionCode and versionName
+		gradleFileContent = gradleFileContent.replace(
+			/versionCode .*/,
+			'versionCode appProperties.getProperty(\'versionCode\').toInteger()',
+		);
+		gradleFileContent = gradleFileContent.replace(
+			/versionName .*/,
+			'versionName appProperties.getProperty(\'versionName\')',
+		);
 
-        // Write new build.gradle
-        await fs.writeFile(androidGradleFilePath, gradleFileContent);
+		// Write new build.gradle
+		await fs.writeFile(androidGradleFilePath, gradleFileContent);
 
-        // Create app.properties
-        const initialAppPropertiesContent = 'versionCode: 1000\nversionName: v1.0.0';
-        await fs.writeFile(androidAppPropertiesPath, initialAppPropertiesContent);
-    }
+		// Create app.properties
+		const initialAppPropertiesContent = 'versionCode: 1000\nversionName: v1.0.0';
+		await fs.writeFile(androidAppPropertiesPath, initialAppPropertiesContent);
+	}
 }
 
 export async function updateAndroidVersion(newVersionString) {
 	logger.log('Updating Android App Version...');
 
-    await transformGradleAndCreateAppProperties();
+	await transformGradleAndCreateAppProperties();
 
 	const appPropertiesExist = await fs.exists(androidAppPropertiesPath);
 	if (appPropertiesExist === false) {
