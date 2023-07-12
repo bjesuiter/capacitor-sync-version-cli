@@ -99,6 +99,14 @@ All notable changes to this project will be documented here.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+### v3.0.7 - 2023-07-12
+
+- Update Dependencies: 
+  
+  - Commander to ^11.0.0
+  - fs-extra to ^11.1.1
+  - read-pkg to ^8.0.0
+
 ### v3.0.6 - 2023-05-23
 
 - Update npm shield in readme to be able to click on it to come to npm
