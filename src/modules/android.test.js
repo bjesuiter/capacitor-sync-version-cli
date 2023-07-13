@@ -88,7 +88,9 @@ test('transforms build.gradle and creates app.properties', async t => {
 
 	// Lee el archivo build.gradle transformado
 	const gradleFileContent = await fs.readFile(androidGradleFilePath);
-	t.true(gradleFileContent.includes('appProperties.getProperty(\'versionCode\').toInteger()'));
+	t.true(gradleFileContent.includes('def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }'));
+	t.true(gradleFileContent.includes('versionCode appProperties.getProperty(\'versionCode\').toInteger()'));
+	t.true(gradleFileContent.includes('versionName appProperties.getProperty(\'versionName\')'));
 
 	// Verifica que el archivo app.properties existe y tiene el contenido correcto
 	const appPropertiesContent = await fs.readFile(androidAppPropertiesPath);
