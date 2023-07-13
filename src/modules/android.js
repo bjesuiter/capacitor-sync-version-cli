@@ -13,7 +13,8 @@ export const androidGradleFilePath = './android/app/build.gradle';
 
 async function transformGradleAndCreateAppProperties() {
 	// Read gradle
-	let gradleFileContent = (await fs.readFile(androidGradleFilePath)).toString();
+	const gradleFileContentBuf = await fs.readFile(androidGradleFilePath);
+	let gradleFileContent = gradleFileContentBuf.toString();
 
 	// Check if needs to be transformed
 	if (!gradleFileContent.includes('appProperties.getProperty(\'versionCode\').toInteger()')) {
@@ -22,7 +23,7 @@ async function transformGradleAndCreateAppProperties() {
 
 		// Add new lines
 		gradleFileContent = gradleFileContent.replace(
-			"apply plugin: 'com.android.application'",
+			'apply plugin: \'com.android.application\'',
 			`apply plugin: 'com.android.application'\n${newLines}`,
 		);
 
