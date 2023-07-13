@@ -83,17 +83,18 @@ test.after(async () => {
 });
 
 test('transforms build.gradle and creates app.properties', async t => {
-	// Llama a la función para transformar el archivo build.gradle
+	// Call the function to transform the build.gradle file
 	await updateAndroidVersion('1.0.0');
 
-	// Lee el archivo build.gradle transformado
+	// Read the transformed build.gradle file
 	const gradleFileContent = await fs.readFile(androidGradleFilePath);
 	t.true(gradleFileContent.includes('def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }'));
 	t.true(gradleFileContent.includes('versionCode appProperties.getProperty(\'versionCode\').toInteger()'));
 	t.true(gradleFileContent.includes('versionName appProperties.getProperty(\'versionName\')'));
 
-	// Verifica que el archivo app.properties existe y tiene el contenido correcto
+	// Verify that the app.properties file exists and has the correct content
 	const appPropertiesContent = await fs.readFile(androidAppPropertiesPath);
+	// as we called updateAndroidVersion with 1.0.0, it will generate versionCode 1000000 and versionName 1.0.0
 	t.true(appPropertiesContent.includes('versionCode: 1000000'));
 	t.true(appPropertiesContent.includes('versionName: 1.0.0'));
 });
