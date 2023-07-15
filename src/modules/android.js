@@ -1,6 +1,5 @@
 import {parseFile as parsePropertiesFile, stringify as stringifyProperties} from 'java-props';
 import fs from 'fs-extra';
-
 import logdown from 'logdown';
 import {splitVersionIntoParts} from './shared.js';
 
