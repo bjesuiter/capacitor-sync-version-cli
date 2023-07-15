@@ -28,6 +28,7 @@ npm i cap-sync-version
 In Android the plugin will automatically make the following modifications:
 
 1. Add the following after `apply plugin: 'com.android.application'` at the top of `./android/app/build.gradle`:
+
     ```
     def appProperties = new Properties();
     file("app.properties").withInputStream { appProperties.load(it) }
@@ -41,6 +42,7 @@ In Android the plugin will automatically make the following modifications:
         versionName appProperties.getProperty('versionName')
     }
     ```
+
 3. Create a file called `app.properties` under `./android/app/` with the following two properties to the file:
 
     ```
@@ -49,7 +51,6 @@ In Android the plugin will automatically make the following modifications:
     ```
 
     Note: These values will be overwritten with the next call to this `cap-sync-version` cli.
-
 
 ## iOS Notes
 
@@ -115,7 +116,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### v3.0.6 - 2023-05-23
 
-- Update npm shield in readme to be able to click on it to come to npm
+-   Update npm shield in readme to be able to click on it to come to npm
 
 ### v3.0.5 - 2023-05-22
 

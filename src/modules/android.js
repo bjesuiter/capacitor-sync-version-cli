@@ -16,24 +16,25 @@ async function transformGradleAndCreateAppProperties() {
 	let gradleFileContent = gradleFileContentBuf.toString();
 
 	// Check if needs to be transformed
-	if (!gradleFileContent.includes('appProperties.getProperty(\'versionCode\').toInteger()')) {
+	if (!gradleFileContent.includes(`appProperties.getProperty('versionCode').toInteger()`)) {
 		// These are the new lines to be added after `apply plugin: 'com.android.application'`
-		const newLines = 'def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }';
+		const newLines
+			= 'def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }';
 
 		// Add new lines
 		gradleFileContent = gradleFileContent.replace(
-			'apply plugin: \'com.android.application\'',
+			`apply plugin: 'com.android.application'`,
 			`apply plugin: 'com.android.application'\n${newLines}`,
 		);
 
 		// Change versionCode and versionName
 		gradleFileContent = gradleFileContent.replace(
 			/versionCode .*/,
-			'versionCode appProperties.getProperty(\'versionCode\').toInteger()',
+			`versionCode appProperties.getProperty('versionCode').toInteger()`,
 		);
 		gradleFileContent = gradleFileContent.replace(
 			/versionName .*/,
-			'versionName appProperties.getProperty(\'versionName\')',
+			`versionName appProperties.getProperty('versionName')`,
 		);
 
 		// Write new build.gradle
