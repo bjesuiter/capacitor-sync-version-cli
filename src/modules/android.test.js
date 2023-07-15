@@ -1,8 +1,12 @@
 import path from 'node:path';
-
 import test from 'ava';
 import fs from 'fs-extra';
-import {androidAppPropertiesPath, androidGradleFilePath, buildAndroidVersionCode, updateAndroidVersion} from './android.js';
+import {
+	androidAppPropertiesPath,
+	androidGradleFilePath,
+	buildAndroidVersionCode,
+	updateAndroidVersion,
+} from './android.js';
 
 // General Helper Functions
 const macroTitleFunction = (providedTitle, input, expected) => `${providedTitle} ${input} => ${expected}`.trim();
@@ -22,7 +26,9 @@ versionCodeGenMacro.title = macroTitleFunction;
 test.before(async () => {
 	await cleanResources();
 	await fs.mkdirp(path.dirname(androidGradleFilePath));
-	await fs.writeFile(androidGradleFilePath, `apply plugin: 'com.android.application'
+	await fs.writeFile(
+		androidGradleFilePath,
+		`apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -75,7 +81,8 @@ try {
 } catch(Exception e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
 }
-`);
+`,
+	);
 });
 
 test.after(async () => {
@@ -88,13 +95,17 @@ test('transforms build.gradle and creates app.properties', async t => {
 
 	// Read the transformed build.gradle file
 	const gradleFileContent = await fs.readFile(androidGradleFilePath);
-	t.true(gradleFileContent.includes('def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }'));
-	t.true(gradleFileContent.includes('versionCode appProperties.getProperty(\'versionCode\').toInteger()'));
-	t.true(gradleFileContent.includes('versionName appProperties.getProperty(\'versionName\')'));
+	t.true(
+		gradleFileContent.includes(
+			'def appProperties = new Properties();\nfile("app.properties").withInputStream { appProperties.load(it) }',
+		),
+	);
+	t.true(gradleFileContent.includes(`versionCode appProperties.getProperty('versionCode').toInteger()`));
+	t.true(gradleFileContent.includes(`versionName appProperties.getProperty('versionName')`));
 
 	// Verify that the app.properties file exists and has the correct content
 	const appPropertiesContent = await fs.readFile(androidAppPropertiesPath);
-	// as we called updateAndroidVersion with 1.0.0, it will generate versionCode 1000000 and versionName 1.0.0
+	// As we called updateAndroidVersion with 1.0.0, it will generate versionCode 1000000 and versionName 1.0.0
 	t.true(appPropertiesContent.includes('versionCode: 1000000'));
 	t.true(appPropertiesContent.includes('versionName: 1.0.0'));
 });
