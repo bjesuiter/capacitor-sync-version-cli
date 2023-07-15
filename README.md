@@ -23,11 +23,25 @@ The android versionCode is an ever increasing integer-32 defining the unique ver
 npm i cap-sync-version
 ```
 
-## Required Setup for Android
+## Android Notes
 
-1. Create a file called `app.properties` under `./android/app/`.
+In Android the plugin will automatically make the following modifications:
 
-2. Add the following two properties to the file
+1. Add the following after `apply plugin: 'com.android.application'` at the top of `./android/app/build.gradle`:
+    ```
+    def appProperties = new Properties();
+    file("app.properties").withInputStream { appProperties.load(it) }
+    ```
+
+2. Use these new properties to set `versionCode` and `versionName` in `./android/app/build.gradle`
+
+    ```
+    defaultConfig {
+        versionCode appProperties.getProperty('versionCode').toInteger()
+        versionName appProperties.getProperty('versionName')
+    }
+    ```
+3. Create a file called `app.properties` under `./android/app/` with the following two properties to the file:
 
     ```
     versionName: 0.0.1
@@ -36,26 +50,10 @@ npm i cap-sync-version
 
     Note: These values will be overwritten with the next call to this `cap-sync-version` cli.
 
-3. Load the `app.properties` file in `./android/app/build.gradle` by adding the following after `apply plugin: 'com.android.application'` at the top
 
-    ```
-    // This loads the custom app.properties file for applying it's values
-    def appProperties = new Properties();
-    file("app.properties").withInputStream { appProperties.load(it) }
-    ```
+## iOS Notes
 
-4. Use these new properties to set `versionCode` and `versionName` in `./android/app/build.gradle`
-
-    ```
-    defaultConfig {
-        versionCode appProperties.getProperty('versionCode').toInteger()
-        versionName appProperties.getProperty('versionName')
-    }
-    ```
-
-## Required Setup for iOS
-
-None that I'm aware of
+Nothing to say
 
 ## CLI Usage
 
