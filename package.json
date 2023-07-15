@@ -17,6 +17,7 @@
     "start": "./src/cli.js",
     "dry-publish": "np --any-branch --preview ",
     "deploy": "np --no-publish --any-branch && npm publish",
+    "deploy-np": "np --any-branch",
     "prettier": "prettier --write ."
   },
   "dependencies": {
